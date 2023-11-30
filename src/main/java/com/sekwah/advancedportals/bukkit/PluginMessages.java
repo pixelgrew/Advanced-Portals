@@ -1,6 +1,8 @@
 package com.sekwah.advancedportals.bukkit;
 
 import com.sekwah.advancedportals.bukkit.config.ConfigAccessor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -13,12 +15,18 @@ public class PluginMessages {
     public PluginMessages (AdvancedPortalsPlugin plugin) {
         ConfigAccessor config = new ConfigAccessor(plugin, "config.yml");
         this.useCustomPrefix = config.getConfig().getBoolean("UseCustomPrefix");
+
+        MiniMessage mm = MiniMessage.miniMessage();
+
         if (useCustomPrefix) {
-            PluginMessages.customPrefix = config.getConfig().getString("CustomPrefix").replaceAll("&(?=[0-9a-fk-or])", "\u00A7");
-            PluginMessages.customPrefixFail = config.getConfig().getString("CustomPrefixFail").replaceAll("&(?=[0-9a-fk-or])", "\u00A7");
+
+            PluginMessages.customPrefix = LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("CustomPrefix")));
+
+            PluginMessages.customPrefixFail = LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("CustomPrefixFail")));
         }
 
-        WARP_MESSAGE = ChatColor.translateAlternateColorCodes('&', config.getConfig().getString("WarpMessage", "&aYou have warped to &e<warp>&a"));
+        WARP_MESSAGE = LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("WarpMessage", "<green>You have warped to <yellow><warp>")));
+        System.out.println(WARP_MESSAGE);
     }
 
     // This class is so then the common messages in commands or just messages over the commands are the same and can be

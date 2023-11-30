@@ -61,12 +61,12 @@ UseWarpPrefix: true
 
 UseCustomPrefix: false
 
-CustomPrefix: '&a[&eAdvancedPortals&a]'
+CustomPrefix: '<green>[</green><yellow>AdvancedPortals</yellow><green>]<green>'
 
-CustomPrefixFail: '&c[&7AdvancedPortals&c]'
+CustomPrefixFail: '<red>[</red><gray>AdvancedPortals</gray><red>]</red>'
 
 # Message sent to player in chat/action bar on warp
-WarpMessage: '&aYou have warped to &e<warp>&a.'
+WarpMessage: '<green>You have warped to</green> <yellow><warp></yellow>'
 
 BlockSpectatorMode: false
 
