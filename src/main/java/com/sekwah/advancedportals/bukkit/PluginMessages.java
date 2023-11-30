@@ -20,12 +20,12 @@ public class PluginMessages {
 
         if (useCustomPrefix) {
 
-            PluginMessages.customPrefix = LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("CustomPrefix")));
+            PluginMessages.customPrefix = ChatColor.translateAlternateColorCodes('&', LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("CustomPrefix"))));
 
-            PluginMessages.customPrefixFail = LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("CustomPrefixFail")));
+            PluginMessages.customPrefixFail = ChatColor.translateAlternateColorCodes('&', LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("CustomPrefixFail"))));
         }
 
-        WARP_MESSAGE = LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("WarpMessage", "<green>You have warped to <yellow><warp>")));
+        WARP_MESSAGE = ChatColor.translateAlternateColorCodes('&', LegacyComponentSerializer.legacySection().serialize(mm.deserialize(config.getConfig().getString("WarpMessage", "<green>You have warped to <yellow><warp>"))));
         System.out.println(WARP_MESSAGE);
     }
 
